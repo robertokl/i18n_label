@@ -30,7 +30,16 @@ The result is:
 
   &lt;label for="topic_name">A nice name</label> (please ignore the minor problem with html in github)
 
+h1. Generic Example
 
+You can make something like this in your translation file:
+	
+	en-US:
+    activerecord:
+			labels:
+				title: A great title
+				
+And all models that have a title will be translated like that, except if you defined a more specific translation like above for that model.
 
 For more information about where to put your translations, 
 visit "my blog":http://iain.nl/2008/09/translating-activerecord/

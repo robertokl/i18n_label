@@ -11,7 +11,11 @@ module ActionView
         if text.blank?
           content = method_name.humanize
           if object.class.respond_to?(:human_attribute_name)
-            content = object.class.human_attribute_name(method_name)
+            generic_translation = I18n.t("activerecord.labels.#{method_name}")
+            default = {}
+            default = default.merge({:default => generic_translation}) unless generic_translation =~ /^translation missing/
+
+            content = object.class.human_attribute_name(method_name, default)
           end
         else
           content = text.to_s
